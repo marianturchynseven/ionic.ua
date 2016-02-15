@@ -13,6 +13,9 @@ ionicApp.config(function($stateProvider, $urlRouterProvider) {
     .state('main', {
       url: '/main',
       templateUrl: 'js/template/main.html'
+    })
+    .state("otherwise", { 
+      url : '/main'
     });
 });
 

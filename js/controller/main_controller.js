@@ -1,12 +1,18 @@
 ionicApp.controller('MainCtrl', function($scope) {
-console.log('321');
-    $scope.words = '2';  
-    
-    $scope.speak = function() {
-        $scope.words = '3';
-    };
-  ionic.Platform.ready(function() {
-    $scope.words = '9';
-  });
+    $scope.items = [];
 
- });
+    for (var i = 1; i < 5; i++) {
+        var item = {
+            name: 'product-' + i,
+            price: i * 10
+        };
+        console.log(item.price);
+        $scope.items.push(item);
+    }
+
+
+    /*ionic.Platform.ready(function() {
+      $scope.words = '9';
+    });*/
+
+});

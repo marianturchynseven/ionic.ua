@@ -10,8 +10,32 @@ ionicApp.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
     // setup an abstract state for the tabs directive
+    .state('menu', {
+      url: "/menu",
+      abstract: true,
+      templateUrl: "menu.html",
+      controller: 'MenuCtrl'
+    })
+    .state('menu.tabs', {
+      url: "/tab",
+      views: {
+        'menuContent' :{
+          templateUrl: "tabs.html"
+        }
+      }
+    })
+    .state('menu.tabs.buttons', {
+      url: "/buttons",
+      views: {
+        'buttons-tab': {
+          templateUrl: "buttons.html",
+          controller: 'ButtonsTabCtrl'
+        }
+      }
+    })
     .state('main', {
       url: '/main',
+      controller: 'MainCtrl',
       templateUrl: 'js/template/main.html'
     })
     .state("otherwise", { 

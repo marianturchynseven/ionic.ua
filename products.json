@@ -1,9 +1,15 @@
 {"products" : [{
-    "name": "Hammer"
+    "name": "Hammer",
+    "deliverytype": "on site",
+    "priority": "urgent"
 }, {
-    "name": "Roulette"
+    "name": "Roulette",
+    "deliverytype": "the shop",
+    "priority": "bussiness day"
 }, {
-    "name": "Pencil"
+    "name": "Pencil",
+    "deliverytype": "will call",
+    "priority": "urgent"
 }, {
     "name": "Screwdriver"
 }, {

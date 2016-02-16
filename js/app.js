@@ -12,7 +12,7 @@ ionicApp.config(function($stateProvider, $urlRouterProvider) {
     .state('main', {
       url: '/main',
       controller: 'MainCtrl',
-      templateUrl: 'js/template/main.html'
+      templateUrl: 'template/main.html'
     })
     //tabs start
     .state('main.orderinfo', {

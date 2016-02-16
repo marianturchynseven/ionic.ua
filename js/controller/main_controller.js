@@ -1,18 +1,42 @@
-ionicApp.controller('MainCtrl', function($scope) {
-    $scope.items = [];
+ionicApp.controller('MainCtrl', ['$scope', '$http', 'ProductService',
+    function($scope, $http, ProductService) {
+        console.log('MainCtrl');
 
-    for (var i = 1; i < 5; i++) {
-        var item = {
-            name: 'product-' + i,
-            price: i * 10
+        $scope.items = [];
+        $scope.mylist = [];
+
+        ProductService.getProducts()
+            .then(function(data) {
+                console.log(data);
+                $scope.items = data.data.products;
+            });
+
+
+        function inList(item, array) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].name === item.name) {
+                    return i;
+                };
+            };
         };
-        console.log(item.price);
-        $scope.items.push(item);
+
+        $scope.buy = function(item) {
+            var index = inList(item, $scope.mylist);
+
+            if (index !== undefined) {
+                $scope.mylist[index].count++;
+            } else {
+                item.count = 1;
+                $scope.mylist.unshift(item);
+            }
+        };
+        $scope.delete = function(index) {
+            $scope.mylist.splice(index, 1);
+        };
+
+        /*ionic.Platform.ready(function() {
+          $scope.words = '9';
+        });*/
+
     }
-
-
-    /*ionic.Platform.ready(function() {
-      $scope.words = '9';
-    });*/
-
-});
+]);

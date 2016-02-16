@@ -1,34 +1,70 @@
 <div class="bar bar-header bar-positive">
-    <h1 class="title">Header</h1>
+    <h1 class="title">Order</h1>
 </div>
+<!--
+<div class="tabs-striped tabs-background-positive tabs-color-light">
+    <div class="tabs">
+        <a class="tab-item active" href="#">
+            <i class="icon ion-clipboard"></i> Test
+        </a>
+        <a class="tab-item" href="#">
+            <i class="icon ion-settings"></i> Favorites
+        </a>
+        <a class="tab-item" href="#">
+            <i class="icon ion-gear-a"></i> Settings
+        </a>
+    </div> 
+</div>-->
+<ion-tabs class="tabs-icon-top tabs-positive">
+    <ion-tab title="Main Info" icon="ion-clipboard" ui-sref="#/main/orderinfo">
+        <ion-nav-view class="has-header" name="orderinfo-tab">
+            <div class="content ionic-pseudo">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Job Name:
+                    </div>
+                    <select>
+                        <option selected>Job 1</option>
+                        <option>Job 2</option>
+                        <option>Job 3</option>
+                    </select>
+                </label>
+                <!-- <a class="item item-icon-left" href="#">
+                    <i class="icon ion-android-add-circle"></i> Select Product
+                </a> -->
+            </div>
+        </ion-nav-view>
+    </ion-tab>
+    <ion-tab title="Products" icon="ion-settings" ui-sref="#/main/orderproduct">
+        <ion-nav-view class="has-header" name="orderproduct-tab">
+            <h4>Products:</h4>
+            <ion-scroll direction="y" style="height: 221px">
+            	<ion-list>
+	                <div class="item" ng-click="buy(item)" ng-repeat="item in items track by $index">
+				    	{{item.name}}
+				    </div>
 
-<div class="content has-header ionic-pseudo">
-    <label class="item item-input item-select">
-        <div class="input-label">
-            Job Name:
-        </div>
-        <select>
-            <option selected>Job 1</option>
-            <option>Job 2</option>
-            <option>Job 3</option>
-        </select>
-    </label>
+	                <!-- <ion-checkbox ng-change="buy(item)" ng-model="item.checked" >
+	                </ion-checkbox> -->
+	        	</ion-list>
+            </ion-scroll>
+	        
+        	<h4>My list:</h4>
 
-    <a class="item item-icon-left" href="#">
-    	<i class="icon ion-android-add-circle"></i>
-    	Select Product
-  	</a>
-</div>
+            <ion-scroll direction="y" style="height: 221px">
+            	<ion-list>
+            		<ion-item on-swipe-left="delete($index)" ng-repeat="item in mylist track by $index">
+            			{{item.name}}
+            			<span class="badge badge-assertive">{{item.count}}</span>
+            		</ion-item>
 
-
-<!-- 
-<div class="content has-header ionic-pseudo">
-    <div class="list">
-        <div class="item item-button-right" ng-repeat="item in items">
-            {{item.name}} {{item.price | currency}}
-            <button class="button button-positive">
-                <i class="icon ion-ios-telephone"></i>
-            </button>
-        </div>
-    </div>
-</div> -->
+            		<!-- <div class="item item-input-inset" ng-click="buy(item)" ng-repeat="item in items track by $index">
+	                    <label class="input-label">{{item.name}}</label>
+	                    <input type="number" placeholder="input field">
+                	</div> -->
+            	</ion-list>
+            </ion-scroll>
+            	
+        </ion-nav-view>
+    </ion-tab>
+</ion-tabs>
